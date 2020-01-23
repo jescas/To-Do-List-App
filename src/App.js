@@ -1,26 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Todos from './Todos';
+import Form from './Form';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends React.Component {
+  
+  state = {
+    todos: [{
+      id: 1,
+      name: 'Test to-do',
+      completed: false
+    }]
+  }
+  check = (id) => {
+    this.setState({todos: this.state.todos.map(todo => {
+      if (todo.id === id){
+        todo.completed = !todo.completed
+      }
+      return todo;
+    })})
+  };
+
+  delete = (id) => {
+    this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]})
+  };
+
+  addtodo = (name) => {
+    const newtodo = {
+      id: 2,
+      name,
+      completed: false
+    }
+    this.setState({todos: [...this.state.todos, newtodo]})
+  };
+
+  render() {
+    return (
+    <div className="Application">
+      <Form addtodo={this.addtodo}/>
+      <strong>To Do List:</strong>
+     <Todos todos={this.state.todos} check={this.check} delete={this.delete}/>
     </div>
-  );
-}
+    )
+  }
+};
 
 export default App;
+
+//Program is unfinished
