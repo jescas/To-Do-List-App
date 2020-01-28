@@ -7,3 +7,7 @@ A simple To-do List
 ##  Description
 
 This App allows you to input a task in the text box and to submit it. Once the task has been submitted, it will appear as a list below and will give you the option to check it off or delete the task if you no longer need to do it.
+
+### Disclaimer
+
+This App is unfinished & is in the process of being refactored.
